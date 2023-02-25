@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "AppTwo/base.html" %}
+{% load static %}
+{% block body_block %}
+        <!-- <h1>Working!</h1>
+        <h2>Go to /users to see the user list</h2>
+        <h2>Go to /formpage to fill out the form</h2> -->
+      <div class="jumbotron">
+        {% if registered %}
+          <h1>Thanks for registering!</h1>
+        {% else %}
+          <h1>Register Here!</h1>
+          <h3>Fill out the form:</h3>
+
+          <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" name="" value="Register">
+
+          </form>
+        {% endif %}
+      </div>
+        <!-- <h1>Welcome!</h1>
+        <h1>index.html showing!</h1>
+        <h2>Go to /users to sign up!</h2>
+        <h1>{{ text|cut:'world' }}</h1>
+        <h1>{{ number|add:"99" }}</h1> -->
+  {% endblock %}
